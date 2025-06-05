@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class AreaExit : MonoBehaviour
 {
     [SerializeField] string areaToLoad;
+    [SerializeField] string areaTransitionName;
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +25,7 @@ public class AreaExit : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             SceneManager.LoadScene(areaToLoad);
+            PlayerController.instance.areaTransitionName = areaTransitionName;
         }
     }
 }

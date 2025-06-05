@@ -288,6 +288,7 @@ MonoBehaviour:
   moveSpeed: 4
   rb: {fileID: 725876983}
   animator: {fileID: 725876986}
+  areaTransitionName: 
 --- !u!95 &725876986
 Animator:
   serializedVersion: 5
@@ -497,13 +498,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: AreaExit
       objectReference: {fileID: 0}
+    - target: {fileID: 7624074527245572787, guid: 8147cc157560e41e3977cc5278b1a694, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8581280350010893940, guid: 8147cc157560e41e3977cc5278b1a694, type: 3}
+      propertyPath: areaTransitionName
+      value: Countryside-1
+      objectReference: {fileID: 0}
     - target: {fileID: 8664148938817933549, guid: 8147cc157560e41e3977cc5278b1a694, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.62
+      value: 8.75
       objectReference: {fileID: 0}
     - target: {fileID: 8664148938817933549, guid: 8147cc157560e41e3977cc5278b1a694, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.47
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8664148938817933549, guid: 8147cc157560e41e3977cc5278b1a694, type: 3}
       propertyPath: m_LocalPosition.z

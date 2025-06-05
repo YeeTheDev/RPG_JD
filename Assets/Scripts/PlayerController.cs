@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Animator animator;
 
     public static PlayerController instance;
+    public string areaTransitionName;
 
     void Start()
     {

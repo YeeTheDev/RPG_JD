@@ -7,11 +7,17 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float moveSpeed = 2f;
     [SerializeField] Rigidbody2D rb;
     [SerializeField] Animator animator;
-    
+
+    public static PlayerController instance;
 
     void Start()
     {
-        DontDestroyOnLoad(gameObject);
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else { Destroy(gameObject); }
     }
 
     void Update()

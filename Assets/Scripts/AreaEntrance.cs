@@ -9,7 +9,7 @@ public class AreaEntrance : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (PlayerController.instance.areaTransitionName == transitionName)
+        if (PlayerController.instance != null && PlayerController.instance.areaTransitionName == transitionName)
         {
             PlayerController.instance.transform.position = transform.position;
         }

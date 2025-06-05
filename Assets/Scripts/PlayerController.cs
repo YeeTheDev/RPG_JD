@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        
+        DontDestroyOnLoad(gameObject);
     }
 
     void Update()

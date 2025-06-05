@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     public static PlayerController instance;
     public string areaTransitionName;
 
-    void Start()
+    void Awake()
     {
         if (instance == null)
         {

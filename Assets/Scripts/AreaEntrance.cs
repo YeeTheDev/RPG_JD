@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AreaEntrance : MonoBehaviour
 {
-    [SerializeField] string transitionName;
+    public string transitionName;
 
     // Start is called before the first frame update
     void Start()

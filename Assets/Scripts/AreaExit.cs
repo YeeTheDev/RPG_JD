@@ -7,11 +7,11 @@ public class AreaExit : MonoBehaviour
 {
     [SerializeField] string areaToLoad;
     [SerializeField] string areaTransitionName;
+    [SerializeField] AreaEntrance areaEntrance;
 
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+        areaEntrance.transitionName = areaTransitionName;
     }
 
     // Update is called once per frame

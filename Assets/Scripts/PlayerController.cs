@@ -11,6 +11,9 @@ public class PlayerController : MonoBehaviour
     public static PlayerController instance;
     public string areaTransitionName;
 
+    private Vector3 bottomLeftLimit;
+    private Vector3 topRightLimit;
+
     void Awake()
     {
         if (instance == null)
@@ -35,5 +38,16 @@ public class PlayerController : MonoBehaviour
             animator.SetFloat("lastMoveX", xAxis);
             animator.SetFloat("lastMoveY", yAxis);
         }
+
+
+        transform.position = new Vector3(Mathf.Clamp(transform.position.x, bottomLeftLimit.x, topRightLimit.x),
+                                           Mathf.Clamp(transform.position.y, bottomLeftLimit.y, topRightLimit.y),
+                                           transform.position.z);
+    }
+
+    public void SetBounds(Vector3 bottomLeft, Vector3 topRight)
+    {
+        bottomLeftLimit = bottomLeft + new Vector3(0.5f, 1f, 0);
+        topRightLimit = topRight + new Vector3(-0.5f, -1f, 0);
     }
 }

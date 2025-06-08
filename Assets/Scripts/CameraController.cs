@@ -26,6 +26,8 @@ public class CameraController : MonoBehaviour
     void Start()
     {
         target = PlayerController.instance.transform;
+
+        PlayerController.instance.SetBounds(map.localBounds.min, map.localBounds.max);
     }
 
     void LateUpdate()

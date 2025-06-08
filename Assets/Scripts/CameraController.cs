@@ -10,11 +10,17 @@ public class CameraController : MonoBehaviour
 
     private Vector3 bottomLeftLimit;
     private Vector3 topRightLimit;
+    private float halfHeight;
+    private float halfWidth;
+
 
     private void Awake()
     {
-        bottomLeftLimit = map.localBounds.min;
-        topRightLimit = map.localBounds.max;
+        halfHeight = Camera.main.orthographicSize;
+        halfWidth = halfHeight * Camera.main.aspect;
+
+        bottomLeftLimit = map.localBounds.min + new Vector3(halfWidth, halfHeight, 0);
+        topRightLimit = map.localBounds.max + new Vector3(-halfWidth, -halfHeight, 0);
     }
 
     void Start()
@@ -24,11 +30,11 @@ public class CameraController : MonoBehaviour
 
     void LateUpdate()
     {
-        Vector3 followPosition = target.position;
-        followPosition.x = Mathf.Clamp(followPosition.x, bottomLeftLimit.x, topRightLimit.x);
-        followPosition.y = Mathf.Clamp(followPosition.y, bottomLeftLimit.y, topRightLimit.y);
-        followPosition.z = transform.position.z;
+        transform.position = new Vector3(target.position.x, target.position.y, transform.position.z);
 
-        transform.position = followPosition;
+        transform.position = new Vector3(Mathf.Clamp(transform.position.x, bottomLeftLimit.x, topRightLimit.x),
+                                           Mathf.Clamp(transform.position.y, bottomLeftLimit.y, topRightLimit.y),
+                                           transform.position.z);
+
     }
 }

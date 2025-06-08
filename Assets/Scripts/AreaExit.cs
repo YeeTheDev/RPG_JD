@@ -8,6 +8,9 @@ public class AreaExit : MonoBehaviour
     [SerializeField] string areaToLoad;
     [SerializeField] string areaTransitionName;
     [SerializeField] AreaEntrance areaEntrance;
+    [SerializeField] float waitToLoad = 1f;
+
+    private bool shouldLoadAfterFade;
 
     void Awake()
     {
@@ -17,14 +20,24 @@ public class AreaExit : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (shouldLoadAfterFade)
+        {
+            waitToLoad -= Time.deltaTime;
+
+            if (waitToLoad <= 0)
+            {
+                shouldLoadAfterFade = false;
+                SceneManager.LoadScene(areaToLoad);
+            }
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-            SceneManager.LoadScene(areaToLoad);
+            shouldLoadAfterFade = true;
+            UIFade.instance.FadeToBlack();
             PlayerController.instance.areaTransitionName = areaTransitionName;
         }
     }

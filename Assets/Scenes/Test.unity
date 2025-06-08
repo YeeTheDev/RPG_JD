@@ -395,12 +395,16 @@ PrefabInstance:
       value: -1.25
       objectReference: {fileID: 0}
     - target: {fileID: 8581280350010893940, guid: 8147cc157560e41e3977cc5278b1a694, type: 3}
+      propertyPath: areaToLoad
+      value: Countryside
+      objectReference: {fileID: 0}
+    - target: {fileID: 8581280350010893940, guid: 8147cc157560e41e3977cc5278b1a694, type: 3}
       propertyPath: areaTransitionName
       value: Countryside-1
       objectReference: {fileID: 0}
     - target: {fileID: 8664148938817933549, guid: 8147cc157560e41e3977cc5278b1a694, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.75
+      value: 8.93
       objectReference: {fileID: 0}
     - target: {fileID: 8664148938817933549, guid: 8147cc157560e41e3977cc5278b1a694, type: 3}
       propertyPath: m_LocalPosition.y

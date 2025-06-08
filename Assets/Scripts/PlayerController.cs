@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController instance;
+
     [SerializeField] float moveSpeed = 2f;
     [SerializeField] Rigidbody2D rb;
     [SerializeField] Animator animator;
 
-    public static PlayerController instance;
     public string areaTransitionName;
 
     private Vector3 bottomLeftLimit;

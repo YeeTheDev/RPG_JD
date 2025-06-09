@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Animator animator;
 
     public string areaTransitionName;
+    public bool canMove = true;
 
     private Vector3 bottomLeftLimit;
     private Vector3 topRightLimit;
@@ -29,17 +30,21 @@ public class PlayerController : MonoBehaviour
     {
         float xAxis = Input.GetAxisRaw("Horizontal");
         float yAxis = Input.GetAxisRaw("Vertical");
-        rb.velocity = new Vector2(xAxis, yAxis) * moveSpeed;
+
+        if (canMove) { rb.velocity = new Vector2(xAxis, yAxis) * moveSpeed; }
+        else { rb.velocity = Vector2.zero; }
 
         animator.SetFloat("moveX", rb.velocity.x);
         animator.SetFloat("moveY", rb.velocity.y);
 
         if (Mathf.Abs(xAxis) > 0 || Mathf.Abs(yAxis) > 0)
         {
-            animator.SetFloat("lastMoveX", xAxis);
-            animator.SetFloat("lastMoveY", yAxis);
+            if (canMove)
+            {
+                animator.SetFloat("lastMoveX", xAxis);
+                animator.SetFloat("lastMoveY", yAxis);
+            }
         }
-
 
         transform.position = new Vector3(Mathf.Clamp(transform.position.x, bottomLeftLimit.x, topRightLimit.x),
                                            Mathf.Clamp(transform.position.y, bottomLeftLimit.y, topRightLimit.y),

@@ -34,7 +34,12 @@ public class DialogManager : MonoBehaviour
 
                         PlayerController.instance.canMove = true;
                     }
-                    else { dialogText.text = dialogLines[currentLine]; }
+                    else
+                    {
+                        CheckIfName();
+
+                        dialogText.text = dialogLines[currentLine];
+                    }
                 }
                 else { justStarted = false; } 
             }
@@ -47,10 +52,21 @@ public class DialogManager : MonoBehaviour
         currentLine = 0;
         dialogLines = newLines;
 
+        CheckIfName();
         dialogText.text = dialogLines[currentLine];
 
         dialogBox.SetActive(true);
 
         PlayerController.instance.canMove = false;
+    }
+
+    public void CheckIfName()
+    {
+        Debug.Log(dialogLines.Length);
+        if (dialogLines[currentLine].StartsWith("n-"))
+        {
+            nameText.text = dialogLines[currentLine].Replace("n-", "");
+            currentLine++;
+        }
     }
 }

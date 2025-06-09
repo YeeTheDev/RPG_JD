@@ -291,8 +291,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -60, y: -40}
+  m_AnchoredPosition: {x: 0, y: 1.7999992}
+  m_SizeDelta: {x: -60, y: -29.599998}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &244948841
 MonoBehaviour:
@@ -6534,9 +6534,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lines:
-  - Hello there!
-  - General Kenobi!
-  - You are a bold one!
+  - n-Girl
+  - Sir! Help me please!
+  - n-Player
+  - I'm busy lady!
+  - n-Girl
+  - My family has been kidnapped by a dragon!
+  - n-Player
+  - Do you have gold?
+  - n-Girl
+  - ... You know what, I'll do it myself!
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

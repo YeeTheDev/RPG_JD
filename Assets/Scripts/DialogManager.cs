@@ -5,17 +5,18 @@ using TMPro;
 
 public class DialogManager : MonoBehaviour
 {
+    public static DialogManager instance;
+
     [SerializeField] TextMeshProUGUI dialogText;
     [SerializeField] TextMeshProUGUI nameText;
-    [SerializeField] GameObject dialogBox;
+    public GameObject dialogBox;
     [SerializeField] GameObject nameBox;
     [SerializeField] string[] dialogLines;
     [SerializeField] int currentLine;
 
-    private void Start()
-    {
-        dialogText.text = dialogLines[currentLine];
-    }
+    private bool justStarted;
+
+    private void Awake() => instance = this;
 
     private void Update()
     {
@@ -23,11 +24,26 @@ public class DialogManager : MonoBehaviour
         {
             if (Input.GetButtonUp("Fire1"))
             {
-                currentLine++;
+                if (!justStarted)
+                {
+                    currentLine++;
 
-                if (currentLine >= dialogLines.Length) { dialogBox.SetActive(false); }
-                else { dialogText.text = dialogLines[currentLine]; }
+                    if (currentLine >= dialogLines.Length) { dialogBox.SetActive(false); }
+                    else { dialogText.text = dialogLines[currentLine]; }
+                }
+                else { justStarted = false; } 
             }
         }
+    }
+
+    public void ShowDialog(string[] newLines)
+    {
+        justStarted = true;
+        currentLine = 0;
+        dialogLines = newLines;
+
+        dialogText.text = dialogLines[currentLine];
+
+        dialogBox.SetActive(true);
     }
 }

@@ -46,7 +46,7 @@ public class DialogManager : MonoBehaviour
         }
     }
 
-    public void ShowDialog(string[] newLines)
+    public void ShowDialog(string[] newLines, bool isPerson)
     {
         justStarted = true;
         currentLine = 0;
@@ -54,15 +54,15 @@ public class DialogManager : MonoBehaviour
 
         CheckIfName();
         dialogText.text = dialogLines[currentLine];
-
+        
         dialogBox.SetActive(true);
+        nameBox.SetActive(isPerson);
 
         PlayerController.instance.canMove = false;
     }
 
     public void CheckIfName()
     {
-        Debug.Log(dialogLines.Length);
         if (dialogLines[currentLine].StartsWith("n-"))
         {
             nameText.text = dialogLines[currentLine].Replace("n-", "");

@@ -5,6 +5,7 @@ using UnityEngine;
 public class DialogActivator : MonoBehaviour
 {
     [SerializeField] string[] lines;
+    [SerializeField] bool isPerson = true;
 
     private bool canActivate;
 
@@ -22,7 +23,7 @@ public class DialogActivator : MonoBehaviour
     {
         if (canActivate && Input.GetButtonDown("Fire1") && !DialogManager.instance.dialogBox.activeInHierarchy)
         {
-            DialogManager.instance.ShowDialog(lines);
+            DialogManager.instance.ShowDialog(lines, isPerson);
         }
     }
 }

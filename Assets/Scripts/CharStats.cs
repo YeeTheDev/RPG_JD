@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class CharStats : MonoBehaviour
 {
-    [SerializeField] string charName;
-    [SerializeField] int playerLevel = 1;
-    [SerializeField] int currentEXP;
-    [SerializeField] int[] expToNextLevel;
-    [SerializeField] int maxLevel = 100;
-    [SerializeField] int baseEXP = 1000;
-
+    public string charName;
+    public int playerLevel = 1;
+    public int currentEXP;
+    public int[] expToNextLevel;
+    public int maxLevel = 100;
+    public int baseEXP = 1000;
     public int currentHP;
     public int maxHP = 100;
     public int currentMP;

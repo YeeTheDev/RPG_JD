@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
-    [SerializeField] CharStats[] playerStats;
+    public CharStats[] playerStats;
 
     public bool gameMenuOpen, dialogActive, fadingBetweenAreas;
 

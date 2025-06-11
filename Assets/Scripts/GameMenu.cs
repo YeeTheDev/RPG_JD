@@ -18,6 +18,10 @@ public class GameMenu : MonoBehaviour
 
     public GameObject[] statusButtons;
 
+    public TextMeshProUGUI statusName, statusHP, statusMP, statusStrenght, statusDefence, statusWeapon, statusWpnPower,
+        statusArmor, statusArmPower, statusExp;
+    public Image statusImage;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -86,11 +90,27 @@ public class GameMenu : MonoBehaviour
     public void OpenStatus()
     {
         UpdateMainStats();
+        StatusCharacter(0);
 
         for (int i = 0; i < GameManager.instance.playerStats.Length; i++)
         {
             statusButtons[i].SetActive(playerStats[i].gameObject.activeInHierarchy);
             statusButtons[i].GetComponentInChildren<TextMeshProUGUI>().text = playerStats[i].charName;
         }
+    }
+
+    public void StatusCharacter(int selected)
+    {
+        statusName.text = playerStats[selected].charName;
+        statusHP.text = $"HP: {playerStats[selected].currentHP}/{playerStats[selected].maxHP}";
+        statusMP.text = $"MP: {playerStats[selected].currentMP}/{playerStats[selected].maxMP}";
+        statusStrenght.text = playerStats[selected].strenght.ToString();
+        statusDefence.text = playerStats[selected].defence.ToString();
+        statusWeapon.text = playerStats[selected].equippedWeapon != "" ? playerStats[selected].equippedWeapon : "NONE";
+        statusWpnPower.text = playerStats[selected].weaponPower.ToString();
+        statusArmor.text = playerStats[selected].equippedArmor != "" ? playerStats[selected].equippedArmor : "NONE";
+        statusArmPower.text = playerStats[selected].armorPower.ToString();
+        statusExp.text = $"{playerStats[selected].currentEXP}/{playerStats[selected].expToNextLevel[playerStats[selected].playerLevel]}";
+        statusImage.sprite = playerStats[selected].charImage;
     }
 }

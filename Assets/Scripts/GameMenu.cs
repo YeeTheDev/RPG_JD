@@ -16,6 +16,8 @@ public class GameMenu : MonoBehaviour
     public Image[] characterImage;
     public GameObject[] charStatHolder;
 
+    public GameObject[] statusButtons;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -61,6 +63,8 @@ public class GameMenu : MonoBehaviour
 
     public void ToggleWindow(int windowNumber)
     {
+        UpdateMainStats();
+
         for (int i = 0; i < windows.Length; i++)
         {
             if(i == windowNumber) { windows[i].SetActive(!windows[i].activeInHierarchy); }
@@ -77,5 +81,16 @@ public class GameMenu : MonoBehaviour
 
         menu.SetActive(false);
         GameManager.instance.gameMenuOpen = false;
+    }
+
+    public void OpenStatus()
+    {
+        UpdateMainStats();
+
+        for (int i = 0; i < GameManager.instance.playerStats.Length; i++)
+        {
+            statusButtons[i].SetActive(playerStats[i].gameObject.activeInHierarchy);
+            statusButtons[i].GetComponentInChildren<TextMeshProUGUI>().text = playerStats[i].charName;
+        }
     }
 }

@@ -37,6 +37,7 @@ public class AreaExit : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             shouldLoadAfterFade = true;
+            GameManager.instance.fadingBetweenAreas = true;
             UIFade.instance.FadeToBlack();
             PlayerController.instance.areaTransitionName = areaTransitionName;
         }

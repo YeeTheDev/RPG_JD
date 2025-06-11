@@ -16,7 +16,11 @@ public class DialogManager : MonoBehaviour
 
     private bool justStarted;
 
-    private void Awake() => instance = this;
+    private void Awake()
+    {
+        if (instance == null) { instance = this; }
+        else { Destroy(gameObject); } 
+    }
 
     private void Update()
     {
@@ -32,7 +36,7 @@ public class DialogManager : MonoBehaviour
                     {
                         dialogBox.SetActive(false);
 
-                        PlayerController.instance.canMove = true;
+                        GameManager.instance.dialogActive = false;
                     }
                     else
                     {
@@ -58,7 +62,7 @@ public class DialogManager : MonoBehaviour
         dialogBox.SetActive(true);
         nameBox.SetActive(isPerson);
 
-        PlayerController.instance.canMove = false;
+        GameManager.instance.dialogActive = true;
     }
 
     public void CheckIfName()

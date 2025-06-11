@@ -18,6 +18,7 @@ public class GameMenu : MonoBehaviour
         if (Input.GetButtonDown("Fire2"))
         {
             menu.SetActive(!menu.activeInHierarchy);
+            GameManager.instance.gameMenuOpen = menu.activeInHierarchy;
         }
     }
 }

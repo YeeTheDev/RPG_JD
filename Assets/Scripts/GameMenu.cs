@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class GameMenu : MonoBehaviour
 {
     [SerializeField] GameObject menu;
+    [SerializeField] GameObject[] windows;
 
     private CharStats[] playerStats;
 
@@ -26,9 +27,13 @@ public class GameMenu : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire2"))
         {
-            menu.SetActive(!menu.activeInHierarchy);
-            UpdateMainStats();
-            GameManager.instance.gameMenuOpen = menu.activeInHierarchy;
+            if (menu.activeInHierarchy) { CloseMenu(); }
+            else
+            {
+                menu.SetActive(true);
+                UpdateMainStats();
+                GameManager.instance.gameMenuOpen = true;
+            }
         }
     }
 
@@ -52,5 +57,25 @@ public class GameMenu : MonoBehaviour
             }
             else { charStatHolder[i].SetActive(false); }
         }
+    }
+
+    public void ToggleWindow(int windowNumber)
+    {
+        for (int i = 0; i < windows.Length; i++)
+        {
+            if(i == windowNumber) { windows[i].SetActive(!windows[i].activeInHierarchy); }
+            else { windows[i].SetActive(false); }
+        }
+    }
+
+    public void CloseMenu()
+    {
+        for (int i = 0; i < windows.Length; i++)
+        {
+            windows[i].SetActive(false);
+        }
+
+        menu.SetActive(false);
+        GameManager.instance.gameMenuOpen = false;
     }
 }

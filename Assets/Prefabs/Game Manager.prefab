@@ -117,27 +117,27 @@ MonoBehaviour:
   dialogActive: 0
   fadingBetweenAreas: 0
   itemsHeld:
-  - 
-  - 
-  - 
-  - Health Potion
-  - 
-  - 
-  - 
-  - 
   - Iron Sword
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Iron Sword
+  - Iron Sword
+  - Health Potion
+  - Iron Sword
+  - Iron Sword
+  - Iron Sword
+  - Iron Sword
+  - Iron Sword
+  - Iron Sword
+  - Iron Sword
+  - Iron Sword
+  - Iron Sword
+  - Iron Sword
   - Mana Potion
-  - 
-  - 
-  - 
-  - 
-  - 
-  - Wooden Sword
+  - Iron Sword
+  - Iron Sword
+  - Iron Sword
+  - Iron Sword
+  - Iron Sword
+  - Iron Sword
   numberOfItems: 000000000000000000000000040000000000000000000000000000000000000002000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000001000000
   referenceItems:
   - {fileID: 4097800892014234467, guid: bebe10250e49842c28971182f2b65651, type: 3}
@@ -267,6 +267,6 @@ MonoBehaviour:
   defence: 0
   weaponPower: 0
   armorPower: 0
-  equippedWeapon: 
+  equippedWeapon: Wooden Sword
   equippedArmor: 
   charImage: {fileID: 143688481, guid: f0e10565e7b104698b6361ed13406756, type: 3}

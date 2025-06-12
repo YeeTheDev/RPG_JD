@@ -183,8 +183,11 @@ public class GameMenu : MonoBehaviour
         }
     }
 
-    public void CloseItemCharacterChoice()
+    public void CloseItemCharacterChoice() { itemCharacterChoiceMenu.SetActive(false); }
+
+    public void UseItem(int selectecCharacter)
     {
-        itemCharacterChoiceMenu.SetActive(false);
+        activeItem.Use(selectecCharacter);
+        CloseItemCharacterChoice();
     }
 }

@@ -103,7 +103,7 @@ MonoBehaviour:
   itemName: Wooden Sword
   description: Grants 6 strength.
   value: 75
-  itemSprite: {fileID: 21300014, guid: 0bc4ed27aef38a44bb72e80f9beb5326, type: 3}
+  itemSprite: {fileID: 21300074, guid: 0bc4ed27aef38a44bb72e80f9beb5326, type: 3}
   amountToChange: 0
   affectHP: 0
   affectMP: 0

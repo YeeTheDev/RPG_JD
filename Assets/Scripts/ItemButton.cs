@@ -10,15 +10,11 @@ public class ItemButton : MonoBehaviour
     public TextMeshProUGUI amountText;
     public int buttonValue;
 
-    // Start is called before the first frame update
-    void Start()
+    public void Press()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (GameManager.instance.itemsHeld[buttonValue] != "")
+        {
+            GameMenu.instance.SelectItem(GameManager.instance.GetItemDetails(GameManager.instance.itemsHeld[buttonValue]));
+        }
     }
 }

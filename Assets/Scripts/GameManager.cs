@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        SortItems();
     }
 
     // Update is called once per frame

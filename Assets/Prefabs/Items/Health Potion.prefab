@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 1467181449994330984}
   - component: {fileID: 2853840907210046068}
   - component: {fileID: 4097800892014234467}
+  - component: {fileID: 7983905116756546665}
+  - component: {fileID: 1539225147981095063}
   m_Layer: 0
   m_Name: Health Potion
   m_TagString: Untagged
@@ -110,3 +112,50 @@ MonoBehaviour:
   affectStrength: 0
   weaponStrength: 0
   armorStrength: 0
+--- !u!58 &7983905116756546665
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 22390053468432062}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.45
+--- !u!114 &1539225147981095063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 22390053468432062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e61a54861a025464083b648d7ace5026, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

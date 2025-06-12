@@ -18,7 +18,7 @@ public class GameMenu : MonoBehaviour
 
     public GameObject[] statusButtons;
 
-    public TextMeshProUGUI statusName, statusHP, statusMP, statusStrenght, statusDefence, statusWeapon, statusWpnPower,
+    public TextMeshProUGUI statusName, statusHP, statusMP, statusStrength, statusDefence, statusWeapon, statusWpnPower,
         statusArmor, statusArmPower, statusExp;
     public Image statusImage;
 
@@ -104,7 +104,7 @@ public class GameMenu : MonoBehaviour
         statusName.text = playerStats[selected].charName;
         statusHP.text = $"HP: {playerStats[selected].currentHP}/{playerStats[selected].maxHP}";
         statusMP.text = $"MP: {playerStats[selected].currentMP}/{playerStats[selected].maxMP}";
-        statusStrenght.text = playerStats[selected].strenght.ToString();
+        statusStrength.text = playerStats[selected].strength.ToString();
         statusDefence.text = playerStats[selected].defence.ToString();
         statusWeapon.text = playerStats[selected].equippedWeapon != "" ? playerStats[selected].equippedWeapon : "NONE";
         statusWpnPower.text = playerStats[selected].weaponPower.ToString();

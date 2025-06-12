@@ -75,4 +75,74 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+
+    public void AddItem(string itemToAdd)
+    {
+        int newItemIndex = 0;
+        bool foundSpace = false;
+
+        for (int i = 0; i < itemsHeld.Length; i++)
+        {
+            if (itemsHeld[i] == "" || itemsHeld[i] == itemToAdd)
+            {
+                newItemIndex = i;
+                foundSpace = true;
+                break;
+            }
+        }
+
+        if (foundSpace)
+        {
+            bool itemExists = false;
+
+            for (int i = 0; i < referenceItems.Length; i++)
+            {
+                if(referenceItems[i].itemName == itemToAdd)
+                {
+                    itemExists = true;
+
+                    break;
+                }
+            }
+
+            if (itemExists)
+            {
+                itemsHeld[newItemIndex] = itemToAdd;
+                numberOfItems[newItemIndex]++;
+            }
+            else { Debug.LogError($"{itemToAdd} does not exists!"); }
+        }
+
+        GameMenu.instance.ShowItems();
+    }
+
+    public void RemoveItem(string itemToRemove)
+    {
+        bool foundItem = false;
+        int itemIndex = 0;
+
+        for (int i = 0; i < itemsHeld.Length; i++)
+        {
+            if (itemsHeld[i] == itemToRemove)
+            {
+                foundItem = true;
+                itemIndex = i;
+
+                break;
+            }
+        }
+
+        if (foundItem)
+        {
+            numberOfItems[itemIndex]--;
+
+            if (numberOfItems[itemIndex] <= 0)
+            {
+                itemsHeld[itemIndex] = "";
+            }
+
+            GameMenu.instance.ShowItems();
+        }
+        else { Debug.LogError($"Couldn't find {itemToRemove}"); }
+    }
 }

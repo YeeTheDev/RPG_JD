@@ -5662,10 +5662,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1040615451696757175, guid: 4cbb58fdccc404c49a7a998df1a95e47, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1132115783631204074, guid: 4cbb58fdccc404c49a7a998df1a95e47, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -6009,30 +6005,6 @@ PrefabInstance:
     - target: {fileID: 3460981194665648077, guid: 4cbb58fdccc404c49a7a998df1a95e47, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3653598826096618944, guid: 4cbb58fdccc404c49a7a998df1a95e47, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3653598826096618944, guid: 4cbb58fdccc404c49a7a998df1a95e47, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3653598826096618944, guid: 4cbb58fdccc404c49a7a998df1a95e47, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1450057836}
-    - target: {fileID: 3653598826096618944, guid: 4cbb58fdccc404c49a7a998df1a95e47, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: DiscardItem
-      objectReference: {fileID: 0}
-    - target: {fileID: 3653598826096618944, guid: 4cbb58fdccc404c49a7a998df1a95e47, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: GameMenu, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 3653598826096618944, guid: 4cbb58fdccc404c49a7a998df1a95e47, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 3656868583203691833, guid: 4cbb58fdccc404c49a7a998df1a95e47, type: 3}
       propertyPath: m_AnchorMax.y
@@ -6599,17 +6571,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4cbb58fdccc404c49a7a998df1a95e47, type: 3}
---- !u!114 &1450057836 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3962127473682083992, guid: 4cbb58fdccc404c49a7a998df1a95e47, type: 3}
-  m_PrefabInstance: {fileID: 1450057835}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0826f59aa7093424cad7b0529acfb6df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1533686072
 GameObject:
   m_ObjectHideFlags: 0

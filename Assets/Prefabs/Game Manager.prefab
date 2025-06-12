@@ -116,8 +116,29 @@ MonoBehaviour:
   gameMenuOpen: 0
   dialogActive: 0
   fadingBetweenAreas: 0
-  itemsHeld: []
-  numberOfItems: 
+  itemsHeld:
+  - 
+  - 
+  - 
+  - Health Potion
+  - 
+  - 
+  - 
+  - 
+  - Iron Sword
+  - 
+  - 
+  - 
+  - 
+  - 
+  - Mana Potion
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  numberOfItems: 000000000000000000000000040000000000000000000000000000000000000002000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000
   referenceItems:
   - {fileID: 4097800892014234467, guid: bebe10250e49842c28971182f2b65651, type: 3}
   - {fileID: 413805943487990035, guid: a5978247588974a52a37ce52f8206a23, type: 3}

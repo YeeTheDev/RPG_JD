@@ -49,4 +49,30 @@ public class GameManager : MonoBehaviour
 
         return null;
     }
+
+    public void SortItems()
+    {
+        bool finished = false;
+
+        for (int i = 0; i < itemsHeld.Length && !finished; i++)
+        {
+            if (itemsHeld[i] == "")
+            {
+                for (int j = i; j < itemsHeld.Length; j++)
+                {
+                    if (itemsHeld[j] != "")
+                    {
+                        itemsHeld[i] = itemsHeld[j];
+                        numberOfItems[i] = numberOfItems[j];
+
+                        itemsHeld[j] = "";
+                        numberOfItems[j] = 0;
+
+                        break;
+                    }
+                    else if ((j + 1) >= itemsHeld.Length) { finished = true; }
+                }
+            }
+        }
+    }
 }

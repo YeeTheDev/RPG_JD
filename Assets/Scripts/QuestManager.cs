@@ -54,4 +54,17 @@ public class QuestManager : MonoBehaviour
     {
         questMarkersCompleted[GetQuestNumber(questToMark)] = false;
     }
+
+    public void UpdateLocalQuestsObjects()
+    {
+        QuestObjectActivator[] questObjects = FindObjectsOfType<QuestObjectActivator>();
+
+        if (questObjects.Length > 0)
+        {
+            for (int i = 0; i < questObjects.Length; i++)
+            {
+                questObjects[i].CheckCompletion();
+            }
+        }
+    }
 }

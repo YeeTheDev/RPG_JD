@@ -163,8 +163,8 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < playerStats.Length; i++)
         {
             string startPath = $"Player_{playerStats[i].charName}_";
-            if (playerStats[i].gameObject.activeInHierarchy) { PlayerPrefs.SetInt(startPath + "active", 1); }
-            else { PlayerPrefs.SetInt(startPath +"active", 0); }
+            if (playerStats[i].gameObject.activeInHierarchy) { PlayerPrefs.SetInt(startPath + "Active", 1); }
+            else { PlayerPrefs.SetInt(startPath +"Active", 0); }
 
             PlayerPrefs.SetInt(startPath + "Level", playerStats[i].playerLevel);
             PlayerPrefs.SetInt(startPath + "CurrentExp", playerStats[i].currentEXP);
@@ -192,5 +192,31 @@ public class GameManager : MonoBehaviour
         Vector3 loadedPosition = new Vector3(PlayerPrefs.GetFloat("Player_Position_x"),
                                         PlayerPrefs.GetFloat("Player_Position_y"), PlayerPrefs.GetFloat("Player_Position_z"));
         PlayerController.instance.transform.position = loadedPosition;
+
+        for (int i = 0; i < playerStats.Length; i++)
+        {
+            string startPath = $"Player_{playerStats[i].charName}_";
+            if (PlayerPrefs.GetInt(startPath + "Active") == 0) { playerStats[i].gameObject.SetActive(true); }
+            else { playerStats[i].gameObject.SetActive(false); }
+
+            playerStats[i].playerLevel = PlayerPrefs.GetInt(startPath + "Level");
+            playerStats[i].currentEXP = PlayerPrefs.GetInt(startPath + "CurrentExp");
+            playerStats[i].currentHP = PlayerPrefs.GetInt(startPath + "CurrentHP");
+            playerStats[i].maxHP = PlayerPrefs.GetInt(startPath + "MaxHP");
+            playerStats[i].currentMP = PlayerPrefs.GetInt(startPath + "CurrentMP");
+            playerStats[i].maxMP = PlayerPrefs.GetInt(startPath + "MaxMP");
+            playerStats[i].strength = PlayerPrefs.GetInt(startPath + "Strength");
+            playerStats[i].defence = PlayerPrefs.GetInt(startPath + "Defence");
+            playerStats[i].weaponPower = PlayerPrefs.GetInt(startPath + "WpnPwr");
+            playerStats[i].armorPower = PlayerPrefs.GetInt(startPath + "ArmPwr");
+            playerStats[i].equippedWeapon = PlayerPrefs.GetString(startPath + "EquippedWpn");
+            playerStats[i].equippedArmor = PlayerPrefs.GetString(startPath + "EquippedArm");
+        }
+
+        for (int i = 0; i < itemsHeld.Length; i++)
+        {
+            itemsHeld[i] = PlayerPrefs.GetString($"Slot_Item_{i}");
+            numberOfItems[i] = PlayerPrefs.GetInt($"Slot_Amount_{i}");
+        }
     }
 }

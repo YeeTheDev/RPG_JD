@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class GameMenu : MonoBehaviour
 {
-    [SerializeField] GameObject menu;
+    public GameObject menu;
     [SerializeField] GameObject[] windows;
 
     private CharStats[] playerStats;

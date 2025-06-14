@@ -17,6 +17,10 @@ public class Shop : MonoBehaviour
     public ItemButton[] buyItemButtons;
     public ItemButton[] sellItemButtons;
 
+    public Item selectedItem;
+    public TextMeshProUGUI buyItemName, buyItemDescription, buyItemValue;
+    public TextMeshProUGUI sellItemName, sellItemDescription, sellItemValue;
+
     private void Awake()
     {
         if (instance == null)
@@ -44,6 +48,8 @@ public class Shop : MonoBehaviour
 
     public void OpenBuyMenu()
     {
+        buyItemButtons[0].Press();
+
         buyMenu.SetActive(true);
         sellMenu.SetActive(false);
 
@@ -67,6 +73,8 @@ public class Shop : MonoBehaviour
 
     public void OpenSellMenu()
     {
+        sellItemButtons[0].Press();
+
         buyMenu.SetActive(false);
         sellMenu.SetActive(true);
 
@@ -87,5 +95,21 @@ public class Shop : MonoBehaviour
                 sellItemButtons[i].amountText.text = "";
             }
         }
+    }
+
+    public void SelectBuyItem(Item buyItem)
+    {
+        selectedItem = buyItem;
+        buyItemName.text = selectedItem.itemName;
+        buyItemDescription.text = selectedItem.description;
+        buyItemValue.text = $"Value: {selectedItem.value}g";
+    }
+
+    public void SelectSellItem(Item sellItem)
+    {
+        selectedItem = sellItem;
+        sellItemName.text = selectedItem.itemName;
+        sellItemDescription.text = selectedItem.description;
+        sellItemValue.text = $"Value: {Mathf.FloorToInt(selectedItem.value * 0.5f)}g";
     }
 }

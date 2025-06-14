@@ -6691,6 +6691,13 @@ MonoBehaviour:
   - {fileID: 8258019256856617062}
   - {fileID: 4641157344596996153}
   - {fileID: 4528085655635643813}
+  selectedItem: {fileID: 0}
+  buyItemName: {fileID: 6698649617667906567}
+  buyItemDescription: {fileID: 3417970091220811099}
+  buyItemValue: {fileID: 6081133326711546709}
+  sellItemName: {fileID: 8148918219837991741}
+  sellItemDescription: {fileID: 1701144083394423156}
+  sellItemValue: {fileID: 3217912592030898885}
 --- !u!1 &1424720264897847334
 GameObject:
   m_ObjectHideFlags: 0

@@ -72,7 +72,7 @@ GameObject:
   m_Component:
   - component: {fileID: 200496241571031470}
   - component: {fileID: 8093226429088797937}
-  - component: {fileID: 7485486830394126118}
+  - component: {fileID: 6387011959264704167}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -149,7 +149,7 @@ MonoBehaviour:
   - {fileID: 7871541771018367428, guid: 063d458a136fc46d5bd2416631c83f8c, type: 3}
   shopActive: 0
   currentGold: 100
---- !u!114 &7485486830394126118
+--- !u!114 &6387011959264704167
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -161,6 +161,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afbe4556ab7a54f1eb262c425f3eaa1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  questMarkerNames:
+  - 
+  - quest test
+  questMarkersCompleted: 
 --- !u!1 &5077736424573457363
 GameObject:
   m_ObjectHideFlags: 0

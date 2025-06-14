@@ -6,6 +6,7 @@ public class QuestManager : MonoBehaviour
 {
     public static QuestManager instance;
 
+
     public string[] questMarkerNames;
     public bool[] questMarkersCompleted;
 

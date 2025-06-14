@@ -48,11 +48,15 @@ public class QuestManager : MonoBehaviour
     public void MarkQuestComplete(string questToMark)
     {
         questMarkersCompleted[GetQuestNumber(questToMark)] = true;
+
+        UpdateLocalQuestsObjects();
     }
 
     public void MarkQuestIncomplete(string questToMark)
     {
         questMarkersCompleted[GetQuestNumber(questToMark)] = false;
+
+        UpdateLocalQuestsObjects();
     }
 
     public void UpdateLocalQuestsObjects()

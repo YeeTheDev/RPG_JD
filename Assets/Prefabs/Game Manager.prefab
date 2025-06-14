@@ -164,6 +164,9 @@ MonoBehaviour:
   questMarkerNames:
   - 
   - quest test
+  - do something
+  - behind you
+  - no king day
   questMarkersCompleted: 
 --- !u!1 &5077736424573457363
 GameObject:

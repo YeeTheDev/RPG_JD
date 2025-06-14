@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -41,6 +42,9 @@ public class GameManager : MonoBehaviour
             PlayerController.instance.canMove = false;
         }
         else { PlayerController.instance.canMove = true; }
+
+        if (Input.GetKeyDown(KeyCode.O)) { SaveData(); }
+        if (Input.GetKeyDown(KeyCode.P)) { LoadData(); }
     }
 
     public Item GetItemDetails(string itemToGrab)
@@ -147,5 +151,46 @@ public class GameManager : MonoBehaviour
             GameMenu.instance.ShowItems();
         }
         else { Debug.LogError($"Couldn't find {itemToRemove}"); }
+    }
+
+    public void SaveData()
+    {
+        PlayerPrefs.SetString($"Current_Scene", SceneManager.GetActiveScene().name);
+        PlayerPrefs.SetFloat("Player_Position_x", PlayerController.instance.transform.position.x);
+        PlayerPrefs.SetFloat("Player_Position_y", PlayerController.instance.transform.position.y);
+        PlayerPrefs.SetFloat("Player_Position_z", PlayerController.instance.transform.position.z);
+
+        for (int i = 0; i < playerStats.Length; i++)
+        {
+            string startPath = $"Player_{playerStats[i].charName}_";
+            if (playerStats[i].gameObject.activeInHierarchy) { PlayerPrefs.SetInt(startPath + "active", 1); }
+            else { PlayerPrefs.SetInt(startPath +"active", 0); }
+
+            PlayerPrefs.SetInt(startPath + "Level", playerStats[i].playerLevel);
+            PlayerPrefs.SetInt(startPath + "CurrentExp", playerStats[i].currentEXP);
+            PlayerPrefs.SetInt(startPath + "CurrentHP", playerStats[i].currentHP);
+            PlayerPrefs.SetInt(startPath + "MaxHP", playerStats[i].maxHP);
+            PlayerPrefs.SetInt(startPath + "CurrentMP", playerStats[i].currentMP);
+            PlayerPrefs.SetInt(startPath + "MaxMP", playerStats[i].maxMP);
+            PlayerPrefs.SetInt(startPath + "Strength", playerStats[i].strength);
+            PlayerPrefs.SetInt(startPath + "Defence", playerStats[i].defence);
+            PlayerPrefs.SetInt(startPath + "WpnPwr", playerStats[i].weaponPower);
+            PlayerPrefs.SetInt(startPath + "ArmPwr", playerStats[i].armorPower);
+            PlayerPrefs.SetString(startPath + "EquippedWpn", playerStats[i].equippedWeapon);
+            PlayerPrefs.SetString(startPath + "EquippedArm", playerStats[i].equippedArmor);
+        }
+
+        for (int i = 0; i < itemsHeld.Length; i++)
+        {
+            PlayerPrefs.SetString($"Slot_Item_{i}", itemsHeld[i]);
+            PlayerPrefs.SetInt($"Slot_Amount_{i}", numberOfItems[i]);
+        }
+    }
+
+    public void LoadData()
+    {
+        Vector3 loadedPosition = new Vector3(PlayerPrefs.GetFloat("Player_Position_x"),
+                                        PlayerPrefs.GetFloat("Player_Position_y"), PlayerPrefs.GetFloat("Player_Position_z"));
+        PlayerController.instance.transform.position = loadedPosition;
     }
 }

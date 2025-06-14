@@ -5165,9 +5165,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemsForSale:
+  - 
+  - Wooden Sword
+  - Iron Sword
+  - 
+  - 
   - Health Potion
-  - Iron Armor
-  - Leather Armor
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
 --- !u!1001 &943453823
 PrefabInstance:
   m_ObjectHideFlags: 0

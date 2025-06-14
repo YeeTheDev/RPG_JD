@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ShopKeeper : MonoBehaviour
 {
-    public string[] itemsForSale;
+    public string[] itemsForSale = new string[21];
 
     private bool canOpen;
 

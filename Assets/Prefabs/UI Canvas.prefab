@@ -6646,7 +6646,28 @@ MonoBehaviour:
   buyMenu: {fileID: 9012165071529860258}
   sellMenu: {fileID: 2840224848128253105}
   goldText: {fileID: 1892626600245778337}
-  itemsForSale: []
+  itemsForSale:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
   buyItemButtons:
   - {fileID: 647705565538340078}
   - {fileID: 7557089176847103403}
@@ -22569,9 +22590,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3962127473682083992}
-        m_TargetAssemblyTypeName: GameMenu, Assembly-CSharp
-        m_MethodName: OpenItemCharacterChoice
+      - m_Target: {fileID: 7823009078930125377}
+        m_TargetAssemblyTypeName: Shop, Assembly-CSharp
+        m_MethodName: BuyItem
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -28641,9 +28662,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3962127473682083992}
-        m_TargetAssemblyTypeName: GameMenu, Assembly-CSharp
-        m_MethodName: OpenItemCharacterChoice
+      - m_Target: {fileID: 7823009078930125377}
+        m_TargetAssemblyTypeName: Shop, Assembly-CSharp
+        m_MethodName: SellItem
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -5165,9 +5165,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemsForSale:
-  - 
   - Wooden Sword
   - Iron Sword
+  - 
   - 
   - 
   - Health Potion

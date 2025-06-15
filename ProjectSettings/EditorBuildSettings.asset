@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Main_Menu.unity
     guid: 97e6d06ad1c0249c38d98f6443554294
   - enabled: 1
+    path: Assets/Scenes/Loading_Scene.unity
+    guid: 5e3d84405b1a14aec94a431d37d910d2
+  - enabled: 1
     path: Assets/Scenes/Countryside.unity
     guid: db174e8107a15420ea9d8a91bf671b72
   - enabled: 1
@@ -17,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Shop.unity
     guid: 5dfb7c1cb25684eb5a4e0d75d58e7de7
+  - enabled: 1
+    path: Assets/Scenes/Dungeon.unity
+    guid: b2fd995a46e604b89b1bced6f7e36e70
   m_configObjects: {}

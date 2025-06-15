@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class MainMenu : MonoBehaviour
 {
     public string newGameScene;
+    public string loadGameScene;
     public Button continueButton;
 
     private void Awake()
@@ -21,7 +22,9 @@ public class MainMenu : MonoBehaviour
     }
 
     public void Continue()
-    { }
+    {
+        SceneManager.LoadScene(loadGameScene);
+    }
 
     public void NewGame()
     {

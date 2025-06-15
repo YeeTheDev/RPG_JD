@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameMenu : MonoBehaviour
 {
@@ -33,6 +34,7 @@ public class GameMenu : MonoBehaviour
     public TextMeshProUGUI[] itemCharacterChoiceNames;
 
     public TextMeshProUGUI goldTexT;
+    public string mainMenuName;
 
     private void Awake()
     {
@@ -204,4 +206,13 @@ public class GameMenu : MonoBehaviour
     }
 
     public void PlayButtonSound() { AudioManager.instance.PlaySFX(4); }
+
+    public void QuitGame()
+    {
+        SceneManager.LoadScene(mainMenuName);
+        Destroy(GameManager.instance.gameObject);
+        Destroy(PlayerController.instance.gameObject);
+        Destroy(AudioManager.instance.gameObject);
+        Destroy(gameObject);
+    }
 }

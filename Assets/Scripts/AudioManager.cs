@@ -26,10 +26,10 @@ public class AudioManager : MonoBehaviour
 
     public void PlayBGM(int musicIndex)
     {
-        StopMusic();
-
         if (!bgm[musicIndex].isPlaying)
         {
+            StopMusic();
+
             if (musicIndex < bgm.Length)
             {
                 bgm[musicIndex].Play();

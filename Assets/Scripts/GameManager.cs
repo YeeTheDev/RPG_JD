@@ -42,9 +42,6 @@ public class GameManager : MonoBehaviour
             PlayerController.instance.canMove = false;
         }
         else { PlayerController.instance.canMove = true; }
-
-        if (Input.GetKeyDown(KeyCode.O)) { SaveData(); }
-        if (Input.GetKeyDown(KeyCode.P)) { LoadData(); }
     }
 
     public Item GetItemDetails(string itemToGrab)
@@ -196,8 +193,8 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < playerStats.Length; i++)
         {
             string startPath = $"Player_{playerStats[i].charName}_";
-            if (PlayerPrefs.GetInt(startPath + "Active") == 0) { playerStats[i].gameObject.SetActive(true); }
-            else { playerStats[i].gameObject.SetActive(false); }
+            if (PlayerPrefs.GetInt(startPath + "Active") == 0) { playerStats[i].gameObject.SetActive(false); }
+            else { playerStats[i].gameObject.SetActive(true); }
 
             playerStats[i].playerLevel = PlayerPrefs.GetInt(startPath + "Level");
             playerStats[i].currentEXP = PlayerPrefs.GetInt(startPath + "CurrentExp");

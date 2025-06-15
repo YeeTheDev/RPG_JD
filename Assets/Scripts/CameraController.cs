@@ -13,6 +13,8 @@ public class CameraController : MonoBehaviour
     private float halfHeight;
     private float halfWidth;
 
+    public int musicIndexToPlay = 0;
+    private bool musicStarted;
 
     private void Awake()
     {
@@ -38,5 +40,10 @@ public class CameraController : MonoBehaviour
                                            Mathf.Clamp(transform.position.y, bottomLeftLimit.y, topRightLimit.y),
                                            transform.position.z);
 
+        if (!musicStarted)
+        {
+            musicStarted = true;
+            AudioManager.instance.PlayBGM(musicIndexToPlay);
+        }
     }
 }

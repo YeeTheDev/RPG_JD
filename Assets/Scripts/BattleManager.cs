@@ -25,6 +25,8 @@ public class BattleManager : MonoBehaviour
 
     public BattleMove[] movesList;
 
+    public GameObject enemyAttackEffect;
+
     private void Awake()
     {
         if (instance == null)
@@ -51,6 +53,8 @@ public class BattleManager : MonoBehaviour
                 if (!activeBattlers[currentTurn].isPlayer) { StartCoroutine(EnemyMoveCoroutine()); }
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.L)) { NextTurn(); Debug.Log(currentTurn); }
     }
 
     public void BattleStart(string[] enemiesToSpawn)
@@ -198,6 +202,8 @@ public class BattleManager : MonoBehaviour
                 movePower = movesList[i].movePower;
             }
         }
+
+        Instantiate(enemyAttackEffect, activeBattlers[currentTurn].transform.position, activeBattlers[currentTurn].transform.rotation);
 
         DealDamage(selectedTarget, movePower);
     }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
+using TMPro;
 
 public class BattleManager : MonoBehaviour
 {
@@ -27,6 +28,7 @@ public class BattleManager : MonoBehaviour
 
     public GameObject enemyAttackEffect;
     public DamageNumber damageText;
+    public TextMeshProUGUI[] playersNames, playersHP, playersMP;
 
     private void Awake()
     {
@@ -118,6 +120,8 @@ public class BattleManager : MonoBehaviour
 
             turnWaiting = true;
             currentTurn = 0;
+
+            UpdateUIStats();
         }
     }
 
@@ -127,6 +131,7 @@ public class BattleManager : MonoBehaviour
 
         turnWaiting = true;
         UpdateBattle();
+        UpdateUIStats();
     }
 
     public void UpdateBattle()
@@ -220,5 +225,28 @@ public class BattleManager : MonoBehaviour
         activeBattlers[target].currentHP -= damageToDeal;
 
         Instantiate(damageText, activeBattlers[target].transform.position, activeBattlers[target].transform.rotation).SetDamage(damageToDeal);
+
+        UpdateUIStats();
+    }
+
+    public void UpdateUIStats()
+    {
+        for (int i = 0; i < playersNames.Length; i++)
+        {
+            if (activeBattlers.Count > i)
+            {
+                if (activeBattlers[i].isPlayer)
+                {
+                    BattleCharacter playerData = activeBattlers[i];
+
+                    playersNames[i].gameObject.SetActive(true);
+                    playersNames[i].text = playerData.characterName;
+                    playersHP[i].text = $"{Mathf.Clamp(0, int.MaxValue, playerData.currentHP)}/{playerData.maxHP}";
+                    playersMP[i].text = $"{Mathf.Clamp(0, int.MaxValue, playerData.currentMP)}/{playerData.maxMP}";
+                }
+                else { playersNames[i].gameObject.SetActive(false); }
+            }
+            else { playersNames[i].gameObject.SetActive(false); }
+        }
     }
 }

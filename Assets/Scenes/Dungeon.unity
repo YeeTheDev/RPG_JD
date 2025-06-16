@@ -9623,6 +9623,18 @@ MonoBehaviour:
     effect: {fileID: 167327985189395629, guid: 598887105387241fb9a9a7b5a67fe16d, type: 3}
   enemyAttackEffect: {fileID: 4025168358899386371, guid: f15b443a4b243441f82c023ea3de5692, type: 3}
   damageText: {fileID: 9045134698671508105, guid: 7f5fd69da37a14633b01f3b4b9f9937c, type: 3}
+  playersNames:
+  - {fileID: 2055581580}
+  - {fileID: 1760130219}
+  - {fileID: 2071119898}
+  playersHP:
+  - {fileID: 284414600}
+  - {fileID: 828860023}
+  - {fileID: 573788926}
+  playersMP:
+  - {fileID: 72986927}
+  - {fileID: 388261929}
+  - {fileID: 69205157}
 --- !u!4 &2026850151
 Transform:
   m_ObjectHideFlags: 0

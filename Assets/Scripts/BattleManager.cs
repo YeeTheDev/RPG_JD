@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class BattleManager : MonoBehaviour
 {
@@ -44,6 +45,8 @@ public class BattleManager : MonoBehaviour
             if (turnWaiting)
             {
                 uIButtonsHolder.SetActive(activeBattlers[currentTurn].isPlayer);
+
+                if (!activeBattlers[currentTurn].isPlayer) { StartCoroutine(EnemyMoveCoroutine()); }
             }
         }
     }
@@ -155,5 +158,34 @@ public class BattleManager : MonoBehaviour
             GameManager.instance.battleActive = false;
             battleActive = false;
         }
+    }
+
+    public IEnumerator EnemyMoveCoroutine()
+    {
+        turnWaiting = false;
+
+        yield return new WaitForSeconds(1f);
+
+        EnemyAttack();
+
+        yield return new WaitForSeconds(1f);
+
+        NextTurn();
+    }
+
+    public void EnemyAttack()
+    {
+        List<int> players = new List<int>();
+        for (int i = 0; i < activeBattlers.Count; i++)
+        {
+            if (activeBattlers[i].isPlayer && activeBattlers[i].currentHP > 0)
+            {
+                players.Add(i);
+            }
+        }
+
+        int selectedTarget = players[Random.Range(0, players.Count)];
+
+        activeBattlers[selectedTarget].currentHP -= 30;
     }
 }

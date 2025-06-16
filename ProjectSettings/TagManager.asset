@@ -50,3 +50,9 @@ TagManager:
   - name: Foreground
     uniqueID: 3388740123
     locked: 0
+  - name: Battleground
+    uniqueID: 1870035095
+    locked: 0
+  - name: BattleCharacters
+    uniqueID: 3596664931
+    locked: 0

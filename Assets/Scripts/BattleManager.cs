@@ -17,6 +17,11 @@ public class BattleManager : MonoBehaviour
 
     public List<BattleCharacter> activeBattlers = new List<BattleCharacter>();
 
+    public int currentTurn;
+    public bool turnWaiting;
+
+    public GameObject uIButtonsHolder;
+
     private void Awake()
     {
         if (instance == null)
@@ -31,7 +36,15 @@ public class BattleManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.O))
         {
-            BattleStart(new string[] { "Waspy Wasp", "Skeletal Friend" });
+            BattleStart(new string[] { "Skeletal Friend", "Waspy Wasp", "Eyeball" });
+        }
+
+        if (battleActive)
+        {
+            if (turnWaiting)
+            {
+                uIButtonsHolder.SetActive(activeBattlers[currentTurn].isPlayer);
+            }
         }
     }
 
@@ -92,6 +105,55 @@ public class BattleManager : MonoBehaviour
                     }
                 }
             }
+
+            turnWaiting = true;
+            currentTurn = 0;
+        }
+    }
+
+    public void NextTurn()
+    {
+        currentTurn = (currentTurn + 1) % activeBattlers.Count;
+
+        turnWaiting = true;
+        UpdateBattle();
+    }
+
+    public void UpdateBattle()
+    {
+        bool allEnemiesDead = true;
+        bool allPlayersDead = true;
+
+        for (int i = 0; i < activeBattlers.Count; i++)
+        {
+            if (activeBattlers[i].currentHP < 0)
+            {
+                activeBattlers[i].currentHP = 0;
+            }
+
+            if (activeBattlers[i].currentHP == 0)
+            {
+
+            }
+            else
+            {
+                if (activeBattlers[i].isPlayer) { allPlayersDead = false; }
+                else { allEnemiesDead = false; } 
+            }
+        }
+
+        if (allEnemiesDead || allPlayersDead)
+        {
+            if (allEnemiesDead)
+            {
+            }
+            else
+            {
+            }
+
+            battleScene.SetActive(false);
+            GameManager.instance.battleActive = false;
+            battleActive = false;
         }
     }
 }

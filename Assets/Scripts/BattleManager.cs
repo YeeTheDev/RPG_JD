@@ -26,6 +26,7 @@ public class BattleManager : MonoBehaviour
     public BattleMove[] movesList;
 
     public GameObject enemyAttackEffect;
+    public DamageNumber damageText;
 
     private void Awake()
     {
@@ -217,5 +218,7 @@ public class BattleManager : MonoBehaviour
         int damageToDeal = Mathf.RoundToInt(damage);
 
         activeBattlers[target].currentHP -= damageToDeal;
+
+        Instantiate(damageText, activeBattlers[target].transform.position, activeBattlers[target].transform.rotation).SetDamage(damageToDeal);
     }
 }

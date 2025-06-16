@@ -170,6 +170,16 @@ public class BattleManager : MonoBehaviour
             GameManager.instance.battleActive = false;
             battleActive = false;
         }
+        else
+        {
+            while (activeBattlers[currentTurn].currentHP == 0)
+            {
+                if (currentTurn >= activeBattlers.Count)
+                {
+                    currentTurn = 0;
+                }
+            }
+        }
     }
 
     public IEnumerator EnemyMoveCoroutine()

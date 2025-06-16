@@ -241,8 +241,8 @@ public class BattleManager : MonoBehaviour
 
                     playersNames[i].gameObject.SetActive(true);
                     playersNames[i].text = playerData.characterName;
-                    playersHP[i].text = $"{Mathf.Clamp(0, int.MaxValue, playerData.currentHP)}/{playerData.maxHP}";
-                    playersMP[i].text = $"{Mathf.Clamp(0, int.MaxValue, playerData.currentMP)}/{playerData.maxMP}";
+                    playersHP[i].text = $"{Mathf.Clamp(playerData.currentHP, 0, int.MaxValue)}/{playerData.maxHP}";
+                    playersMP[i].text = $"{Mathf.Clamp(playerData.currentMP, 0, int.MaxValue)}/{playerData.maxMP}";
                 }
                 else { playersNames[i].gameObject.SetActive(false); }
             }

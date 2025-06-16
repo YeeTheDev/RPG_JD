@@ -15,6 +15,8 @@ public class BattleManager : MonoBehaviour
     public BattleCharacter[] playerCharacters;
     public BattleCharacter[] enemyCharacters;
 
+    public List<BattleCharacter> activeBattlers = new List<BattleCharacter>();
+
     private void Awake()
     {
         if (instance == null)
@@ -46,6 +48,50 @@ public class BattleManager : MonoBehaviour
 
             battleScene.SetActive(true);
             AudioManager.instance.PlayBGM(0);
+
+            for (int i = 0; i < playerPoints.Length; i++)
+            {
+                if (GameManager.instance.playerStats[i].gameObject.activeInHierarchy)
+                {
+                    for (int j = 0; j < playerCharacters.Length; j++)
+                    {
+                        if (playerCharacters[j].characterName == GameManager.instance.playerStats[i].charName)
+                        {
+                            BattleCharacter charInstance = Instantiate(playerCharacters[j], playerPoints[i].position,
+                                                            playerPoints[i].rotation, playerPoints[i]);
+
+                            activeBattlers.Add(charInstance);
+
+                            CharStats stats = GameManager.instance.playerStats[i];
+                            activeBattlers[i].maxHP = stats.maxHP;
+                            activeBattlers[i].currentHP = stats.currentHP;
+                            activeBattlers[i].maxMP = stats.maxMP;
+                            activeBattlers[i].currentMP = stats.currentMP;
+                            activeBattlers[i].strength = stats.strength;
+                            activeBattlers[i].defence = stats.defence;
+                            activeBattlers[i].wpnPower = stats.weaponPower;
+                            activeBattlers[i].amrPower = stats.armorPower;
+                        }
+                    }
+                }
+            }
+
+            for (int i = 0; i < enemiesToSpawn.Length; i++)
+            {
+                if (enemiesToSpawn[i] != "" && enemiesToSpawn[i] != null)
+                {
+                    for (int j = 0; j < enemyCharacters.Length; j++)
+                    {
+                        if (enemyCharacters[j].characterName == enemiesToSpawn[i])
+                        {
+                            BattleCharacter enemy = Instantiate(enemyCharacters[j], enemyPoints[i].position,
+                                                        enemyPoints[i].rotation, enemyPoints[i]);
+
+                            activeBattlers.Add(enemy);
+                        }
+                    }
+                }
+            }
         }
     }
 }

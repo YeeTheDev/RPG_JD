@@ -97,3 +97,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61c402c61eaeb4f84ac34d24f22b8254, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 0
+  movesAvailable: []
+  characterName: Tim
+  currentHP: 0
+  maxHP: 0
+  currentMP: 0
+  maxMP: 0
+  strength: 0
+  defence: 0
+  wpnPower: 0
+  amrPower: 0
+  hasDied: 0

@@ -117,6 +117,7 @@ MonoBehaviour:
   gameMenuOpen: 0
   dialogActive: 0
   fadingBetweenAreas: 0
+  battleActive: 0
   itemsHeld:
   - 
   - 
@@ -274,7 +275,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abd9ebc59696048948d7a916bf748c15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  charName: Player
+  charName: Tim
   playerLevel: 1
   currentEXP: 82
   expToNextLevel: 

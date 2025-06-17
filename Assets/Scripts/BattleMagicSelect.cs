@@ -18,5 +18,11 @@ public class BattleMagicSelect : MonoBehaviour
             BattleManager.instance.OpenTargetMenu(spellName);
             BattleManager.instance.activeBattlers[BattleManager.instance.currentTurn].currentMP -= spellCost;
         }
+        else
+        {
+            BattleManager.instance.notification.notificationText.text = "Not enough MP.";
+            BattleManager.instance.notification.Activate();
+            BattleManager.instance.magicMenu.SetActive(false);
+        }
     }
 }

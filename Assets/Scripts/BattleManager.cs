@@ -29,6 +29,8 @@ public class BattleManager : MonoBehaviour
     public GameObject enemyAttackEffect;
     public DamageNumber damageText;
     public TextMeshProUGUI[] playersNames, playersHP, playersMP;
+    public GameObject targetMenu;
+    public BattleTargetButton[] targetButtons; 
 
     private void Awake()
     {
@@ -258,5 +260,57 @@ public class BattleManager : MonoBehaviour
             }
             else { playersNames[i].gameObject.SetActive(false); }
         }
+    }
+
+    public void PlayerAttack(string moveName, int selectedTarget)
+    {
+        int movePower = 0;
+        for (int i = 0; i < movesList.Length; i++)
+        {
+            if (movesList[i].moveName == moveName)
+            {
+                Instantiate(movesList[i].effect, activeBattlers[selectedTarget].transform.position, activeBattlers[selectedTarget].transform.rotation);
+                movePower = movesList[i].movePower;
+            }
+        }
+
+        Instantiate(enemyAttackEffect, activeBattlers[currentTurn].transform.position, activeBattlers[currentTurn].transform.rotation);
+
+        DealDamage(selectedTarget, movePower);
+
+        uIButtonsHolder.SetActive(false);
+        targetMenu.SetActive(false);
+        NextTurn();
+    }
+
+    public void OpenTargetMenu(string moveName)
+    {
+        List<int> enemies = new List<int>();
+
+        for (int i = 0; i < activeBattlers.Count; i++)
+        {
+            if (!activeBattlers[i].isPlayer)
+            {
+                enemies.Add(i);
+            }
+        }
+
+        for (int i = 0; i < targetButtons.Length; i++)
+        {
+            if (enemies.Count > i)
+            {
+                targetButtons[i].gameObject.SetActive(true);
+
+                targetButtons[i].moveName = moveName;
+                targetButtons[i].activeBattlerTarget = enemies[i];
+                targetButtons[i].targetName.text = activeBattlers[enemies[i]].characterName;
+            }
+            else
+            {
+                targetButtons[i].gameObject.SetActive(false);
+            }
+        }
+
+        targetMenu.SetActive(true);
     }
 }

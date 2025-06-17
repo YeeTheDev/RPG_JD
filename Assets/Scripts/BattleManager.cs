@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class BattleManager : MonoBehaviour
 {
@@ -36,6 +37,8 @@ public class BattleManager : MonoBehaviour
     public BattleNotification notification;
 
     public int changeToFlee = 35;
+    public string gameOverScene;
+
 
     private void Awake()
     {
@@ -183,6 +186,7 @@ public class BattleManager : MonoBehaviour
             }
             else
             {
+                StartCoroutine(GameOverCoroutine());
             }
 
             battleScene.SetActive(false);
@@ -413,5 +417,16 @@ public class BattleManager : MonoBehaviour
         GameManager.instance.battleActive = false;
 
         AudioManager.instance.PlayBGM(Camera.main.GetComponent<CameraController>().musicIndexToPlay);
+    }
+
+    public IEnumerator GameOverCoroutine()
+    {
+        battleActive = false;
+        UIFade.instance.FadeToBlack();
+
+        yield return new WaitForSeconds(1.5f);
+
+        battleScene.SetActive(false);
+        SceneManager.LoadScene(gameOverScene);
     }
 }

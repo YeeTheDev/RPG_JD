@@ -13365,6 +13365,7 @@ MonoBehaviour:
   - {fileID: 154234159}
   notification: {fileID: 0}
   changeToFlee: 35
+  gameOverScene: GameOver
 --- !u!4 &2026850151
 Transform:
   m_ObjectHideFlags: 0

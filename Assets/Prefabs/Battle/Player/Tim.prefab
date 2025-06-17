@@ -110,3 +110,6 @@ MonoBehaviour:
   wpnPower: 0
   amrPower: 0
   hasDied: 0
+  spriteRenderer: {fileID: 646376165740540604}
+  aliveSprite: {fileID: 374609980, guid: f0e10565e7b104698b6361ed13406756, type: 3}
+  deadSprite: {fileID: -1465885685, guid: f0e10565e7b104698b6361ed13406756, type: 3}

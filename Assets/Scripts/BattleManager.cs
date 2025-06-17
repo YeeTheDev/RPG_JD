@@ -30,7 +30,10 @@ public class BattleManager : MonoBehaviour
     public DamageNumber damageText;
     public TextMeshProUGUI[] playersNames, playersHP, playersMP;
     public GameObject targetMenu;
-    public BattleTargetButton[] targetButtons; 
+    public BattleTargetButton[] targetButtons;
+    public GameObject magicMenu;
+    public BattleMagicSelect[] magicButtons;
+
 
     private void Awake()
     {
@@ -312,5 +315,34 @@ public class BattleManager : MonoBehaviour
         }
 
         targetMenu.SetActive(true);
+    }
+
+    public void OpenMagicMenu()
+    {
+        magicMenu.SetActive(true);
+
+        for (int i = 0; i < magicButtons.Length; i++)
+        {
+            if (activeBattlers[currentTurn].movesAvailable.Length > i)
+            {
+                magicButtons[i].gameObject.SetActive(true);
+
+                magicButtons[i].spellName = activeBattlers[currentTurn].movesAvailable[i];
+                magicButtons[i].nameText.text = magicButtons[i].spellName;
+
+                for (int j = 0; j < movesList.Length; j++)
+                {
+                    if (movesList[j].moveName == magicButtons[i].spellName)
+                    {
+                        magicButtons[i].spellCost = movesList[j].moveCost;
+                        magicButtons[i].costText.text = magicButtons[i].spellCost.ToString();
+                    }
+                }
+            }
+            else
+            {
+                magicButtons[i].gameObject.SetActive(false);
+            }
+        }
     }
 }

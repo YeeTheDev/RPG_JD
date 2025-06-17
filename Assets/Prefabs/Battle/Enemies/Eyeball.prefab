@@ -101,7 +101,7 @@ MonoBehaviour:
   movesAvailable:
   - Fire
   characterName: Eyeball
-  currentHP: 150
+  currentHP: 10
   maxHP: 250
   currentMP: 0
   maxMP: 0
@@ -110,3 +110,7 @@ MonoBehaviour:
   wpnPower: 5
   amrPower: 5
   hasDied: 0
+  spriteRenderer: {fileID: 378862950123324552}
+  aliveSprite: {fileID: 0}
+  deadSprite: {fileID: 0}
+  fadeSpeed: 1

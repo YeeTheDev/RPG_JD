@@ -101,7 +101,7 @@ MonoBehaviour:
   movesAvailable:
   - Slash
   characterName: Skeletal Friend
-  currentHP: 100
+  currentHP: 10
   maxHP: 250
   currentMP: 0
   maxMP: 0
@@ -110,3 +110,7 @@ MonoBehaviour:
   wpnPower: 10
   amrPower: 0
   hasDied: 0
+  spriteRenderer: {fileID: 8348572925570190914}
+  aliveSprite: {fileID: 0}
+  deadSprite: {fileID: 0}
+  fadeSpeed: 1

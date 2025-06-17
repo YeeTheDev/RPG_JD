@@ -155,11 +155,22 @@ public class BattleManager : MonoBehaviour
 
             if (activeBattlers[i].currentHP == 0)
             {
-
+                if (activeBattlers[i].isPlayer)
+                {
+                    activeBattlers[i].spriteRenderer.sprite = activeBattlers[i].deadSprite;
+                }
+                else
+                {
+                    activeBattlers[i].EnemyFade();
+                }
             }
             else
             {
-                if (activeBattlers[i].isPlayer) { allPlayersDead = false; }
+                if (activeBattlers[i].isPlayer)
+                {
+                    allPlayersDead = false;
+                    activeBattlers[i].spriteRenderer.sprite = activeBattlers[i].aliveSprite;
+                }
                 else { allEnemiesDead = false; } 
             }
         }
@@ -302,7 +313,7 @@ public class BattleManager : MonoBehaviour
 
         for (int i = 0; i < targetButtons.Length; i++)
         {
-            if (enemies.Count > i)
+            if (enemies.Count > i && activeBattlers[enemies[i]].currentHP > 0)
             {
                 targetButtons[i].gameObject.SetActive(true);
 

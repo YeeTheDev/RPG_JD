@@ -101,7 +101,7 @@ MonoBehaviour:
   movesAvailable:
   - Fire
   characterName: Waspy Wasp
-  currentHP: 75
+  currentHP: 10
   maxHP: 100
   currentMP: 100
   maxMP: 150
@@ -110,3 +110,7 @@ MonoBehaviour:
   wpnPower: 3
   amrPower: 2
   hasDied: 0
+  spriteRenderer: {fileID: 5479582484219639838}
+  aliveSprite: {fileID: 0}
+  deadSprite: {fileID: 0}
+  fadeSpeed: 1

@@ -38,6 +38,10 @@ public class BattleManager : MonoBehaviour
 
     public int changeToFlee = 35;
     public string gameOverScene;
+    private bool flee;
+
+    public int rewardXP;
+    public string[] rewardItems;
 
 
     private void Awake()
@@ -368,7 +372,11 @@ public class BattleManager : MonoBehaviour
     {
         int fleeChance = Random.Range(0, 100);
 
-        if (fleeChance < changeToFlee) { StartCoroutine(EndBattleCoroutine()); }
+        if (fleeChance < changeToFlee)
+        {
+            StartCoroutine(EndBattleCoroutine());
+            flee = true;
+        }
         else
         {
             NextTurn();
@@ -414,7 +422,12 @@ public class BattleManager : MonoBehaviour
 
         yield return new WaitForSeconds(0.5f);
 
-        GameManager.instance.battleActive = false;
+        if (flee)
+        {
+            GameManager.instance.battleActive = false;
+            flee = false;
+        }
+        else { BattleReward.instance.OpenRewardScreen(rewardXP, rewardItems); }
 
         AudioManager.instance.PlayBGM(Camera.main.GetComponent<CameraController>().musicIndexToPlay);
     }

@@ -179,6 +179,7 @@ public class BattleManager : MonoBehaviour
         {
             if (allEnemiesDead)
             {
+                StartCoroutine(EndBattleCoroutine());
             }
             else
             {
@@ -363,16 +364,54 @@ public class BattleManager : MonoBehaviour
     {
         int fleeChance = Random.Range(0, 100);
 
-        if (fleeChance < changeToFlee)
-        {
-            battleActive = false;
-            battleScene.SetActive(false);
-        }
+        if (fleeChance < changeToFlee) { StartCoroutine(EndBattleCoroutine()); }
         else
         {
             NextTurn();
             notification.notificationText.text = "Couldn't escape!";
             notification.Activate();
         }
+    }
+
+    public IEnumerator EndBattleCoroutine()
+    {
+        battleActive = false;
+        uIButtonsHolder.SetActive(false);
+        targetMenu.SetActive(false);
+        magicMenu.SetActive(false);
+
+        yield return new WaitForSeconds(1f);
+
+        UIFade.instance.FadeToBlack();
+
+        yield return new WaitForSeconds(1.5f);
+
+        for (int i = 0; i < activeBattlers.Count; i++)
+        {
+            if (activeBattlers[i].isPlayer)
+            {
+                for (int j = 0; j < GameManager.instance.playerStats.Length; j++)
+                {
+                    if(activeBattlers[i].characterName == GameManager.instance.playerStats[j].charName)
+                    {
+                        GameManager.instance.playerStats[j].currentHP = activeBattlers[i].currentHP;
+                        GameManager.instance.playerStats[j].currentMP = activeBattlers[i].currentMP;
+                    }
+                }
+            }
+
+            Destroy(activeBattlers[i].gameObject);
+        }
+
+        UIFade.instance.FadeFromBlack();
+        battleScene.SetActive(false);
+        activeBattlers.Clear();
+        currentTurn = 0;
+
+        yield return new WaitForSeconds(0.5f);
+
+        GameManager.instance.battleActive = false;
+
+        AudioManager.instance.PlayBGM(Camera.main.GetComponent<CameraController>().musicIndexToPlay);
     }
 }

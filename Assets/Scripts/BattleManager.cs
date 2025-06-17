@@ -42,7 +42,7 @@ public class BattleManager : MonoBehaviour
 
     public int rewardXP;
     public string[] rewardItems;
-
+    public bool cannotFlee;
 
     private void Awake()
     {
@@ -56,11 +56,6 @@ public class BattleManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            BattleStart(new string[] { "Skeletal Friend", "Waspy Wasp", "Eyeball" });
-        }
-
         if (battleActive)
         {
             if (turnWaiting)
@@ -74,10 +69,12 @@ public class BattleManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.L)) { NextTurn(); Debug.Log(currentTurn); }
     }
 
-    public void BattleStart(string[] enemiesToSpawn)
+    public void BattleStart(string[] enemiesToSpawn, bool cannotFlee)
     {
         if (!battleActive)
         {
+            this.cannotFlee = cannotFlee;
+
             battleActive = true;
 
             Vector3 camPosition = Camera.main.transform.position;
@@ -370,18 +367,26 @@ public class BattleManager : MonoBehaviour
 
     public void Flee()
     {
-        int fleeChance = Random.Range(0, 100);
-
-        if (fleeChance < changeToFlee)
+        if (cannotFlee)
         {
-            StartCoroutine(EndBattleCoroutine());
-            flee = true;
+            notification.notificationText.text = "Can not flee this battle";
+            notification.Activate();
         }
         else
         {
-            NextTurn();
-            notification.notificationText.text = "Couldn't escape!";
-            notification.Activate();
+            int fleeChance = Random.Range(0, 100);
+
+            if (fleeChance < changeToFlee)
+            {
+                StartCoroutine(EndBattleCoroutine());
+                flee = true;
+            }
+            else
+            {
+                NextTurn();
+                notification.notificationText.text = "Couldn't escape!";
+                notification.Activate();
+            }
         }
     }
 

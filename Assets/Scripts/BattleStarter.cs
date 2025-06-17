@@ -11,6 +11,8 @@ public class BattleStarter : MonoBehaviour
     public float timeBetweenBattles;
     private float betweenBattleCounter;
 
+    public bool cannotFlee;
+
     public bool deactivateAfterStarting;
 
     private void Start()
@@ -77,7 +79,7 @@ public class BattleStarter : MonoBehaviour
 
         yield return new WaitForSeconds(1.5f);
 
-        BattleManager.instance.BattleStart(potentialBattles[selectedBattle].enemies);
+        BattleManager.instance.BattleStart(potentialBattles[selectedBattle].enemies, cannotFlee);
         UIFade.instance.FadeFromBlack();
 
         if (deactivateAfterStarting)

@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using RPG.Controllers;
+using RPG.LevelData;
 
 public class PlayerController : MonoBehaviour
 {
@@ -13,8 +15,9 @@ public class PlayerController : MonoBehaviour
     public string areaTransitionName;
     public bool canMove = true;
 
-    private Vector3 bottomLeftLimit;
-    private Vector3 topRightLimit;
+    Player_Controller playerController;
+    AnimationPlayer animationPlayer;
+    LevelBounds levelBounds;
 
     void Awake()
     {
@@ -24,36 +27,22 @@ public class PlayerController : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
         else { Destroy(gameObject); }
+
+        playerController = GetComponent<Player_Controller>();
+        animationPlayer = GetComponent<AnimationPlayer>();
+
+        levelBounds = FindObjectOfType<LevelBounds>();
     }
 
     void Update()
     {
-        float xAxis = Input.GetAxisRaw("Horizontal");
-        float yAxis = Input.GetAxisRaw("Vertical");
+        if (canMove) { rb.velocity = playerController.ControlAxis * moveSpeed;  Debug.Log("Hello there!"); }
+        else { rb.velocity = Vector2.zero; Debug.Log("General Kenobi!"); }
 
-        if (canMove) { rb.velocity = new Vector2(xAxis, yAxis) * moveSpeed; }
-        else { rb.velocity = Vector2.zero; }
+        animationPlayer.MoveAnimation(rb.velocity.sqrMagnitude > Mathf.Epsilon, rb.velocity.x, rb.velocity.y);;
 
-        animator.SetFloat("moveX", rb.velocity.x);
-        animator.SetFloat("moveY", rb.velocity.y);
-
-        if (Mathf.Abs(xAxis) > 0 || Mathf.Abs(yAxis) > 0)
-        {
-            if (canMove)
-            {
-                animator.SetFloat("lastMoveX", xAxis);
-                animator.SetFloat("lastMoveY", yAxis);
-            }
-        }
-
-        transform.position = new Vector3(Mathf.Clamp(transform.position.x, bottomLeftLimit.x, topRightLimit.x),
-                                           Mathf.Clamp(transform.position.y, bottomLeftLimit.y, topRightLimit.y),
+        transform.position = new Vector3(Mathf.Clamp(transform.position.x, levelBounds.MinLimit.x, levelBounds.MaxLimit.x),
+                                           Mathf.Clamp(transform.position.y, levelBounds.MinLimit.y, levelBounds.MaxLimit.y),
                                            transform.position.z);
-    }
-
-    public void SetBounds(Vector3 bottomLeft, Vector3 topRight)
-    {
-        bottomLeftLimit = bottomLeft + new Vector3(0.5f, 1f, 0);
-        topRightLimit = topRight + new Vector3(-0.5f, -1f, 0);
     }
 }

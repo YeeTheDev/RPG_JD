@@ -2,34 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using RPG.LevelData;
 
 public class CameraController : MonoBehaviour
 {
     [SerializeField] Transform target;
     [SerializeField] Tilemap map;
 
-    private Vector3 bottomLeftLimit;
-    private Vector3 topRightLimit;
-    private float halfHeight;
-    private float halfWidth;
-
+    Vector3 bottomLeftLimit;
+    Vector3 topRightLimit;
     public int musicIndexToPlay = 0;
     private bool musicStarted;
 
     private void Awake()
     {
-        halfHeight = Camera.main.orthographicSize;
-        halfWidth = halfHeight * Camera.main.aspect;
+        float halfHeight = Camera.main.orthographicSize;
+        float halfWidth = halfHeight * Camera.main.aspect;
 
-        bottomLeftLimit = map.localBounds.min + new Vector3(halfWidth, halfHeight, 0);
-        topRightLimit = map.localBounds.max + new Vector3(-halfWidth, -halfHeight, 0);
+        LevelBounds levelBounds = FindObjectOfType<LevelBounds>();
+        bottomLeftLimit = levelBounds.MinLimit + new Vector3(halfWidth, halfHeight, 0);
+        topRightLimit = levelBounds.MaxLimit + new Vector3(-halfWidth, -halfHeight, 0);
     }
 
     void Start()
     {
         target = PlayerController.instance.transform;
-
-        PlayerController.instance.SetBounds(map.localBounds.min, map.localBounds.max);
     }
 
     void LateUpdate()

@@ -399,7 +399,6 @@ public class BattleManager : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
 
-        UIFade.instance.FadeToBlack();
 
         yield return new WaitForSeconds(1.5f);
 
@@ -420,7 +419,6 @@ public class BattleManager : MonoBehaviour
             Destroy(activeBattlers[i].gameObject);
         }
 
-        UIFade.instance.FadeFromBlack();
         battleScene.SetActive(false);
         activeBattlers.Clear();
         currentTurn = 0;
@@ -439,7 +437,6 @@ public class BattleManager : MonoBehaviour
     public IEnumerator GameOverCoroutine()
     {
         battleActive = false;
-        UIFade.instance.FadeToBlack();
 
         yield return new WaitForSeconds(1.5f);
 

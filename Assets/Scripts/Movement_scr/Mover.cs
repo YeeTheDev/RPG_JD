@@ -26,10 +26,10 @@ namespace RPG.Movement
 
             animationPlayer.MoveAnimation(rb2D.velocity.sqrMagnitude > Mathf.Epsilon, rb2D.velocity.x, rb2D.velocity.y); ;
 
-            ClampPlayerPosition();
+            ClampPosition();
         }
 
-        private void ClampPlayerPosition()
+        private void ClampPosition()
         {
             float clampedXAxis = Mathf.Clamp(transform.position.x, Bounds.MinLimit.x, Bounds.MaxLimit.x);
             float clampedYAxis = Mathf.Clamp(transform.position.y, Bounds.MinLimit.y, Bounds.MaxLimit.y);

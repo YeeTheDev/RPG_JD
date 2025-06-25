@@ -72,7 +72,6 @@ public class BattleStarter : MonoBehaviour
 
     public IEnumerator StartBattleCoroutine()
     {
-        UIFade.instance.FadeToBlack();
         GameManager.instance.battleActive = true;
 
         int selectedBattle = Random.Range(0, potentialBattles.Length);
@@ -83,7 +82,6 @@ public class BattleStarter : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
 
         BattleManager.instance.BattleStart(potentialBattles[selectedBattle].enemies, cannotFlee);
-        UIFade.instance.FadeFromBlack();
 
         if (deactivateAfterStarting)
         {

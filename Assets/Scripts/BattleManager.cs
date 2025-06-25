@@ -434,7 +434,6 @@ public class BattleManager : MonoBehaviour
         }
         else { BattleReward.instance.OpenRewardScreen(rewardXP, rewardItems); }
 
-        AudioManager.instance.PlayBGM(Camera.main.GetComponent<CameraController>().musicIndexToPlay);
     }
 
     public IEnumerator GameOverCoroutine()

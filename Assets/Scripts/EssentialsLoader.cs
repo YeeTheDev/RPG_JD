@@ -12,7 +12,7 @@ public class EssentialsLoader : MonoBehaviour
     private void OnEnable()
     {
         if (UIFade.instance == null) { Instantiate(uIScreen); }
-        if (PlayerController.instance == null) { Instantiate(player); }
+        if (GameObject.FindGameObjectWithTag("Player") == null) { Instantiate(player); }
         if (GameManager.instance == null) { Instantiate(gameManager); }
         if (AudioManager.instance == null) { Instantiate(audioManager); }
     }

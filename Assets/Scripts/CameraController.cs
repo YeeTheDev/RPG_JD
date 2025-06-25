@@ -1,18 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Tilemaps;
 using RPG.LevelData;
+using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    [SerializeField] Transform target;
-    [SerializeField] Tilemap map;
-
+    Transform target;
     Vector3 bottomLeftLimit;
     Vector3 topRightLimit;
-    public int musicIndexToPlay = 0;
-    private bool musicStarted;
 
     private void Awake()
     {
@@ -26,7 +19,7 @@ public class CameraController : MonoBehaviour
 
     void Start()
     {
-        target = PlayerController.instance.transform;
+        target = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     void LateUpdate()
@@ -38,11 +31,5 @@ public class CameraController : MonoBehaviour
         transform.position = new Vector3(Mathf.Clamp(transform.position.x, bottomLeftLimit.x, topRightLimit.x),
                                            Mathf.Clamp(transform.position.y, bottomLeftLimit.y, topRightLimit.y),
                                            transform.position.z);
-
-        if (!musicStarted)
-        {
-            musicStarted = true;
-            AudioManager.instance.PlayBGM(musicIndexToPlay);
-        }
     }
 }

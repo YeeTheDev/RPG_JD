@@ -10,7 +10,6 @@ public class GameOver : MonoBehaviour
     {
         AudioManager.instance.PlayBGM(4);
 
-        PlayerController.instance.gameObject.SetActive(false);
         GameMenu.instance.gameObject.SetActive(false);
         BattleManager.instance.gameObject.SetActive(false);
     }
@@ -18,7 +17,6 @@ public class GameOver : MonoBehaviour
     public void QuitToMain()
     {
         Destroy(GameManager.instance.gameObject);
-        Destroy(PlayerController.instance.gameObject);
         Destroy(GameMenu.instance.gameObject);
         Destroy(AudioManager.instance.gameObject);
         Destroy(BattleManager.instance.gameObject);
@@ -29,7 +27,6 @@ public class GameOver : MonoBehaviour
     public void LoadLastSave()
     {
         Destroy(GameManager.instance.gameObject);
-        Destroy(PlayerController.instance.gameObject);
         Destroy(GameMenu.instance.gameObject);
         Destroy(BattleManager.instance.gameObject);
 

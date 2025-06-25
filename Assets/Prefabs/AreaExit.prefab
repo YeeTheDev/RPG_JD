@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8581280350010893940}
   m_Layer: 0
   m_Name: AreaExit
-  m_TagString: Untagged
+  m_TagString: Exit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -91,9 +91,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ec9e73ae9ae54ecfa5883b4bf577e8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  areaToLoad: Test2
-  areaTransitionName: 
-  areaEntrance: {fileID: 1385786136876018297}
+  sceneToLoad: Shop
+  destination: {fileID: 7624074527245572787}
+  entranceID: 0
 --- !u!1 &7579552103294770374
 GameObject:
   m_ObjectHideFlags: 0
@@ -103,9 +103,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7624074527245572787}
-  - component: {fileID: 1385786136876018297}
   m_Layer: 0
-  m_Name: AreaEntrance
+  m_Name: Entrance
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -126,16 +125,3 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8664148938817933549}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1385786136876018297
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7579552103294770374}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7cd1100d370a64c56bed4413ff99b331, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  transitionName: 

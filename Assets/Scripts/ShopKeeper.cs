@@ -10,7 +10,7 @@ public class ShopKeeper : MonoBehaviour
 
     private void Update()
     {
-        if (canOpen && Input.GetButtonDown("Fire1") && PlayerController.instance.canMove && !Shop.instance.shopMenu.activeInHierarchy)
+        if (canOpen && Input.GetButtonDown("Fire1") && !Shop.instance.shopMenu.activeInHierarchy)
         {
             Shop.instance.itemsForSale = itemsForSale;
             Shop.instance.OpenShop();

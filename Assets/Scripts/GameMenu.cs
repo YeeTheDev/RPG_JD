@@ -201,7 +201,6 @@ public class GameMenu : MonoBehaviour
 
     public void SaveGame()
     {
-        GameManager.instance.SaveData();
         QuestManager.instance.SaveQuestData();
     }
 
@@ -211,7 +210,6 @@ public class GameMenu : MonoBehaviour
     {
         SceneManager.LoadScene(mainMenuName);
         Destroy(GameManager.instance.gameObject);
-        Destroy(PlayerController.instance.gameObject);
         Destroy(AudioManager.instance.gameObject);
         Destroy(gameObject);
     }

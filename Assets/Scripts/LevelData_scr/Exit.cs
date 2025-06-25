@@ -11,6 +11,7 @@ namespace RPG.LevelData
         [SerializeField] string sceneToLoad;
         [SerializeField] Transform destination;
         [SerializeField] EntranceID entranceID;
+        [SerializeField] Collider2D col2D;
 
         Loader loader;
 
@@ -18,6 +19,8 @@ namespace RPG.LevelData
 
         public IEnumerator StartExit()
         {
+            col2D.enabled = false;
+
             DontDestroyOnLoad(gameObject);
 
             yield return loader.StartLoadScene(sceneToLoad);

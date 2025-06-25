@@ -1,29 +1,40 @@
 using RPG.LevelData;
 using UnityEngine;
 using System.Collections;
-using RPG.Movement;
+using RPG.Controllers;
 
 namespace RPG.Physics
 {
     public class PlayerCollisioner : MonoBehaviour
     {
-        Mover mover;
+        enum CollisionType { Enter, Stay, Exit }
+
+        public GameObject Interaction { get; private set; }
+
+        Player_Controller controller;
 
         private void Awake()
         {
-            mover = GetComponent<Mover>();
+            controller = GetComponent<Player_Controller>();
         }
 
-        private void OnTriggerEnter2D(Collider2D other)
+        private void OnTriggerEnter2D(Collider2D other) { ProcessCollision(other.gameObject, CollisionType.Enter); }
+        private void OnTriggerExit2D(Collider2D other) { ProcessCollision(other.gameObject, CollisionType.Exit); }
+
+        private void ProcessCollision(GameObject other, CollisionType type)
         {
-            if (other.CompareTag("Exit")) { StartCoroutine(Exiting(other.GetComponent<Exit>())); }
+            if (other.CompareTag("Exit") && type == CollisionType.Enter) { StartCoroutine(Exiting(other)); }
+            else if (other.CompareTag("Interactable")) { Interaction = type == CollisionType.Enter ? other : null; }
         }
 
-        private IEnumerator Exiting(Exit exit)
+        private IEnumerator Exiting(GameObject other)
         {
-            yield return exit.StartExit();
+            controller.CanMove(false);
 
-            mover.Bounds = FindObjectOfType<LevelBounds>();
+            yield return other.GetComponent<Exit>().StartExit();
+
+            controller.SearchBounds();
+            controller.CanMove(true);
         }
     }
 }

@@ -1,3 +1,4 @@
+using System.Collections;
 using RPG.LevelData;
 using UnityEngine;
 
@@ -16,8 +17,6 @@ namespace RPG.Movement
         {
             rb2D = GetComponent<Rigidbody2D>();
             animationPlayer = GetComponent<AnimationPlayer>();
-
-            Bounds = FindObjectOfType<LevelBounds>();
         }
 
         public void Move(Vector2 axis)
